@@ -6,7 +6,7 @@
  */
 
 // API Client
-export { default as axiosClient } from '@/lib/api/axiosClient';
+export { axiosClient, reactQueryClient } from '@/lib/api/axiosClient';
 
 // API Functions
 export * from '@/lib/api/adhocQuery';

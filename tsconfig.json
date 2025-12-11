@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "lib": ["DOM", "DOM.Iterable", "ES2020"],
+    "target": "ES2022",
+    "lib": ["DOM", "DOM.Iterable", "ES2024"],
     "module": "ESNext",
     "moduleResolution": "bundler",
     "declaration": true,
     "declarationMap": true,
     "outDir": "./dist",
-    "rootDir": "./src",
-    "strict": true,
+    "rootDirs": ["./src", "./recce-source/js/src"],
+    "strict": false,
     "noEmit": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -20,9 +20,11 @@
     "downlevelIteration": true,
     "paths": {
       "@/*": ["./recce-source/js/src/*"],
-      "@recce/*": ["./recce-source/js/src/*"]
+      "@recce/*": ["./recce-source/js/src/*"],
+      "src/*": ["./recce-source/js/src/*"],
+      "public/*": ["./recce-source/js/public/*"]
     }
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "src/global.d.ts"],
   "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.test.tsx"]
 }

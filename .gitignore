@@ -49,3 +49,6 @@ storybook-static/
 *.log
 tmp/
 temp/
+
+# Patched submodule files (don't commit patches to submodule)
+recce-source/

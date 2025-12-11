@@ -11,4 +11,4 @@ export { useClipBoardToast } from '@/lib/hooks/useClipBoardToast';
 
 // Re-export component-specific hooks
 export { useLineageViewContext } from '@/components/lineage/LineageViewContext';
-export { useValueDiffAlertDialog } from '@/components/lineage/useValueDiffAlertDialog';
+export { default as useValueDiffAlertDialog } from '@/components/lineage/useValueDiffAlertDialog';

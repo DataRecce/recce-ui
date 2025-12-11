@@ -157,12 +157,31 @@ git submodule update
 # Install dependencies
 pnpm install
 
+# The postinstall script will automatically apply TypeScript patches
+# If you need to reapply patches manually:
+npm run patch:apply
+
 # Build the library
 pnpm build
 
 # Run in development mode
 pnpm dev
+
+# Type checking
+pnpm type:check        # Run with known issues handled
+pnpm type:check:strict # Run strict type checking
 ```
+
+#### TypeScript Patches
+
+This package includes automatic patches to fix TypeScript strict mode issues in the source code. These patches are applied automatically during `npm install` and fix:
+
+1. Type assertion issues in CheckDetail.tsx
+2. Boolean type issues in CheckList.tsx
+3. Type conversion issues in LineageViewContextMenu.tsx
+4. Type inference issues in toaster.tsx
+
+The patches are temporary fixes until the main Recce repository is updated.
 
 ### Updating the Submodule
 

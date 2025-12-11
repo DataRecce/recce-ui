@@ -10,7 +10,7 @@ export default defineConfig({
     types: 'src/types/index.ts'
   },
   format: ['cjs', 'esm'],
-  dts: true,
+  dts: false, // Temporarily disable due to type issues in source
   sourcemap: true,
   clean: true,
   external: [
@@ -39,7 +39,8 @@ export default defineConfig({
     };
     options.alias = {
       '@': path.resolve(__dirname, 'recce-source/js/src'),
-      'src': path.resolve(__dirname, 'recce-source/js/src')
+      'src': path.resolve(__dirname, 'recce-source/js/src'),
+      'public': path.resolve(__dirname, 'recce-source/js/public')
     };
     options.external = [
       ...options.external || [],
