@@ -1,15 +1,15 @@
-# @recce/ui
+# @datarecce/ui
 
 React component library for building data validation and review interfaces. This library provides the UI components used in [Recce](https://github.com/DataRecce/recce), a data validation tool for dbt projects.
 
 ## Installation
 
 ```bash
-npm install @recce/ui
+npm install @datarecce/ui
 # or
-yarn add @recce/ui
+yarn add @datarecce/ui
 # or
-pnpm add @recce/ui
+pnpm add @datarecce/ui
 ```
 
 ## Peer Dependencies
@@ -34,17 +34,15 @@ This library requires the following peer dependencies:
 Wrap your application with the Recce UI Provider:
 
 ```tsx
-import { Provider } from '@recce/ui';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Provider } from "@datarecce/ui";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Provider>
-        {/* Your app components */}
-      </Provider>
+      <Provider>{/* Your app components */}</Provider>
     </QueryClientProvider>
   );
 }
@@ -59,8 +57,8 @@ import {
   LineageView,
   QueryForm,
   ProfileDiffForm,
-  SchemaView
-} from '@recce/ui';
+  SchemaView,
+} from "@datarecce/ui";
 
 function MyComponent() {
   return (
@@ -78,52 +76,59 @@ The library provides multiple entry points for different features:
 
 ```tsx
 // Main components
-import { LineageView, QueryForm } from '@recce/ui/components';
+import { LineageView, QueryForm } from "@datarecce/ui/components";
 
 // API utilities
-import { axiosClient, fetchChecks } from '@recce/ui/api';
+import { axiosClient, fetchChecks } from "@datarecce/ui/api";
 
 // Custom hooks
-import { useLineageViewContext, useCheckToast } from '@recce/ui/hooks';
+import { useLineageViewContext, useCheckToast } from "@datarecce/ui/hooks";
 
 // TypeScript types
-import type { DataFrame, Check, Run } from '@recce/ui/types';
+import type { DataFrame, Check, Run } from "@datarecce/ui/types";
 ```
 
 ## Component Categories
 
 ### Lineage Components
+
 - `LineageView` - Interactive lineage graph visualization
 - `LineagePage` - Full lineage page with controls
 - `GraphNode`, `GraphEdge` - Graph building blocks
 - `NodeView` - Detailed node information display
 
 ### Query Components
+
 - `QueryForm` - SQL query input form
 - `QueryPage` - Complete query interface
 - `SqlEditor` - Monaco-based SQL editor
 - `QueryResultView` - Query results display
 
 ### Profile Components
+
 - `ProfileDiffForm` - Data profiling comparison form
 - `ProfileDiffResultView` - Profile diff results display
 
 ### Chart Components
+
 - `HistogramChart` - Histogram visualization
 - `TopKSummaryList` - Top-K value summary
 - `HistogramDiffForm` - Histogram comparison interface
 
 ### Schema Components
+
 - `SchemaView` - Schema structure display
 - `SchemaDiffView` - Schema comparison view
 - `ColumnNameCell` - Schema column renderer
 
 ### Check Components
+
 - `CheckList` - List of validation checks
 - `CheckDetail` - Detailed check view
 - `LineageDiffView` - Lineage difference visualization
 
 ### Run Components
+
 - `RunPage` - Run execution interface
 - `RunList` - List of execution runs
 - `RunView` - Individual run details
@@ -133,11 +138,11 @@ import type { DataFrame, Check, Run } from '@recce/ui/types';
 The library includes API client utilities that need to be configured with your backend URL:
 
 ```tsx
-import { axiosClient } from '@recce/ui/api';
+import { axiosClient } from "@datarecce/ui/api";
 
 // Configure the API client
-axiosClient.defaults.baseURL = 'http://localhost:8000';
-axiosClient.defaults.headers.common['Authorization'] = 'Bearer token';
+axiosClient.defaults.baseURL = "http://localhost:8000";
+axiosClient.defaults.headers.common["Authorization"] = "Bearer token";
 ```
 
 ## Development

@@ -20,7 +20,7 @@
     "downlevelIteration": true,
     "paths": {
       "@/*": ["./recce-source/js/src/*"],
-      "@recce/*": ["./recce-source/js/src/*"],
+      "@datarecce/*": ["./recce-source/js/src/*"],
       "src/*": ["./recce-source/js/src/*"],
       "public/*": ["./recce-source/js/public/*"]
     }

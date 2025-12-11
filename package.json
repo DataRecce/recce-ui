@@ -1,5 +1,5 @@
 {
-  "name": "@recce/ui",
+  "name": "@datarecce/ui",
   "version": "0.1.0",
   "description": "Recce UI Components Library - Reusable React components for data validation and review",
   "main": "./dist/index.js",
@@ -67,7 +67,7 @@
     "ui-library",
     "typescript"
   ],
-  "author": "InfuseAI",
+  "author": "Recce Dev Team <dev@reccehq.com>",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
