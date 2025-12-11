@@ -48,7 +48,7 @@
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
-    "type:check": "tsc --noEmit -p tsconfig.check.json || echo 'Type check completed with known issues'",
+    "type:check": "tsc --noEmit",
     "type:check:strict": "tsc --noEmit",
     "lint": "eslint src --ext ts,tsx",
     "test": "vitest",
@@ -56,9 +56,7 @@
     "storybook": "storybook dev -p 6006",
     "build:storybook": "storybook build",
     "prepublishOnly": "npm run build",
-    "submodule:update": "git submodule update --remote --merge",
-    "postinstall": "npm run patch:apply || true",
-    "patch:apply": "node scripts/apply-patches.js"
+    "submodule:update": "git submodule update --remote --merge"
   },
   "keywords": [
     "react",
@@ -123,12 +121,16 @@
     "@types/js-cookie": "^3.0.6",
     "@types/lodash": "^4.17.21",
     "@types/node": "^24.10.2",
-    "@types/react": "^18.0.0 || ^19.0.0",
-    "@types/react-dom": "^18.0.0 || ^19.0.0",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
     "@types/react-syntax-highlighter": "^15.5.13",
     "next": "^16.0.0",
     "tsup": "^8.3.5",
     "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3"
   },
   "engines": {
     "node": ">=20"

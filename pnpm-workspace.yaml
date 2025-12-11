@@ -1,0 +1,3 @@
+packages:
+  - '.'
+  - 'recce-source/js'
