@@ -1,0 +1,3 @@
+[submodule "recce-source"]
+	path = recce-source
+	url = https://github.com/DataRecce/recce.git
