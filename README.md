@@ -18,8 +18,8 @@ This library requires the following peer dependencies:
 
 ```json
 {
-  "@chakra-ui/react": "^3.0.0",
   "@emotion/react": "^11.0.0",
+  "@mui/material": "^7.0.0",
   "@tanstack/react-query": "^5.0.0",
   "@xyflow/react": "^12.0.0",
   "axios": "^1.0.0",
@@ -27,6 +27,8 @@ This library requires the following peer dependencies:
   "react-dom": "^18.0.0 || ^19.0.0"
 }
 ```
+
+> **Note**: This library uses Material-UI (MUI) for its UI components. The `@emotion/react` dependency is required by MUI for styling.
 
 ## Usage
 
