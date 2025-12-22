@@ -25,6 +25,6 @@
       "public/*": ["./recce-source/js/public/*"]
     }
   },
-  "include": ["src/**/*", "src/global.d.ts"],
+  "include": ["src/**/*", "src/global.d.ts", "src/mui-augmentation.d.ts"],
   "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.test.tsx"]
 }
