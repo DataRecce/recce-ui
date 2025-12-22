@@ -52,3 +52,7 @@ temp/
 
 # Patched submodule files (don't commit patches to submodule)
 recce-source/
+
+# Claude Code (local overrides only)
+.claude/settings.local.json
+.claude/*.local.*
