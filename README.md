@@ -22,6 +22,7 @@ This library requires the following peer dependencies:
   "@emotion/react": "^11.0.0",
   "@tanstack/react-query": "^5.0.0",
   "@xyflow/react": "^12.0.0",
+  "axios": "^1.0.0",
   "react": "^18.0.0 || ^19.0.0",
   "react-dom": "^18.0.0 || ^19.0.0"
 }
@@ -31,10 +32,10 @@ This library requires the following peer dependencies:
 
 ### Basic Setup
 
-Wrap your application with the Recce UI Provider:
+Wrap your application with the required providers:
 
 ```tsx
-import { Provider } from "@datarecce/ui";
+import { MuiProvider, ToasterProvider } from "@datarecce/ui";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
@@ -42,7 +43,11 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Provider>{/* Your app components */}</Provider>
+      <MuiProvider>
+        <ToasterProvider>
+          {/* Your app components */}
+        </ToasterProvider>
+      </MuiProvider>
     </QueryClientProvider>
   );
 }
@@ -101,7 +106,7 @@ import type { DataFrame, Check, Run } from "@datarecce/ui/types";
 
 - `QueryForm` - SQL query input form
 - `QueryPage` - Complete query interface
-- `SqlEditor` - Monaco-based SQL editor
+- `SqlEditor` - CodeMirror-based SQL editor
 - `QueryResultView` - Query results display
 
 ### Profile Components
@@ -147,66 +152,113 @@ axiosClient.defaults.headers.common["Authorization"] = "Bearer token";
 
 ## Development
 
-### Building from Source
+### Prerequisites
 
-This package uses a git submodule to reference the main Recce repository:
+- Node.js >= 20
+- pnpm (package manager)
+
+### Quick Start
 
 ```bash
 # Clone with submodules
 git clone --recursive https://github.com/DataRecce/recce-ui.git
-
-# Or if already cloned, initialize submodules
-git submodule init
-git submodule update
+cd recce-ui
 
 # Install dependencies
 pnpm install
 
-# The postinstall script will automatically apply TypeScript patches
-# If you need to reapply patches manually:
-npm run patch:apply
-
 # Build the library
+make build
+
+# Run type checking
+make type-check
+```
+
+### Available Make Commands
+
+```bash
+make help          # Show all available commands
+make sync          # Sync submodule to latest main and update dependencies
+make sync-branch BRANCH=feature/xyz  # Sync to specific branch
+make install       # Install dependencies
+make build         # Build the package
+make type-check    # Run TypeScript type checking
+make clean         # Clean build artifacts
+make verify        # Run sync + build + type-check
+```
+
+### Syncing with Recce OSS
+
+This package uses a git submodule (`recce-source`) that references the main Recce repository. To update to the latest version:
+
+```bash
+# Sync to latest main branch
+make sync
+
+# Or sync to a specific branch
+make sync-branch BRANCH=feature/new-feature
+```
+
+The sync command will:
+1. Update the submodule to the latest commit
+2. Sync dependencies from the Recce OSS package.json
+3. Install updated dependencies
+
+### Manual Commands
+
+If you prefer not to use Make:
+
+```bash
+# Initialize submodules (if not cloned with --recursive)
+git submodule init
+git submodule update
+
+# Update submodule to latest
+pnpm run submodule:update
+
+# Sync dependencies from OSS
+pnpm run sync:deps
+
+# Build
 pnpm build
 
-# Run in development mode
-pnpm dev
-
 # Type checking
-pnpm type:check        # Run with known issues handled
-pnpm type:check:strict # Run strict type checking
+pnpm type:check        # Filters OSS-side errors
+pnpm type:check:all    # Shows all errors including OSS
 ```
 
-#### TypeScript Patches
+### Project Structure
 
-This package includes automatic patches to fix TypeScript strict mode issues in the source code. These patches are applied automatically during `npm install` and fix:
-
-1. Type assertion issues in CheckDetail.tsx
-2. Boolean type issues in CheckList.tsx
-3. Type conversion issues in LineageViewContextMenu.tsx
-4. Type inference issues in toaster.tsx
-
-The patches are temporary fixes until the main Recce repository is updated.
-
-### Updating the Submodule
-
-To update the Recce source code:
-
-```bash
-pnpm run submodule:update
 ```
-
-### Running Storybook
-
-View component documentation and examples:
-
-```bash
-pnpm storybook
+recce-ui/
+├── src/                    # Wrapper/re-export source files
+│   ├── components/         # Component exports
+│   ├── api/                # API client exports
+│   ├── hooks/              # Hook exports
+│   └── types/              # Type exports
+├── recce-source/           # Git submodule (Recce OSS)
+│   └── js/src/             # Actual component source code
+├── scripts/
+│   ├── sync-submodule.sh   # Submodule sync script
+│   └── sync-deps.js        # Dependency sync script
+├── dist/                   # Built output
+├── Makefile                # Build automation
+└── package.json
 ```
 
 ## TypeScript Support
 
 This library is written in TypeScript and provides full type definitions. All exports include proper TypeScript types for enhanced development experience.
+
+### Custom Theme Colors
+
+The library extends MUI with custom theme colors. If you're using TypeScript and need to use these colors, import the type augmentations:
+
+```tsx
+// This is automatically included when importing from @datarecce/ui
+// Custom colors available: brand, iochmara, cyan, amber, green, red, rose, fuchsia, neutral
+// Custom sizes available: xsmall
+```
 
 ## License
 
