@@ -1,6 +1,8 @@
 name: Release
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
     inputs:
       version_type:
@@ -20,6 +22,8 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
+    # Skip if commit message starts with "chore: release" (to avoid infinite loop)
+    if: ${{ !startsWith(github.event.head_commit.message, 'chore: release') }}
     permissions:
       contents: write
       id-token: write # Required for npm OIDC trusted publishing
@@ -73,11 +77,14 @@ jobs:
         id: bump
         run: |
           OLD_VERSION=$(node -p "require('./package.json').version")
-          npm version ${{ inputs.version_type }} --no-git-tag-version
+          # Use input version_type for manual trigger, default to "patch" for push trigger
+          VERSION_TYPE="${{ inputs.version_type || 'patch' }}"
+          npm version $VERSION_TYPE --no-git-tag-version
           NEW_VERSION=$(node -p "require('./package.json').version")
           echo "old_version=$OLD_VERSION" >> $GITHUB_OUTPUT
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
-          echo "Bumped version from $OLD_VERSION to $NEW_VERSION"
+          echo "version_type=$VERSION_TYPE" >> $GITHUB_OUTPUT
+          echo "Bumped version ($VERSION_TYPE) from $OLD_VERSION to $NEW_VERSION"
 
       - name: Commit version bump
         run: |
