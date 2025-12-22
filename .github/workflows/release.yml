@@ -23,8 +23,7 @@ jobs:
   release:
     runs-on: ubuntu-latest
     # Skip if commit message starts with "chore: release" (to avoid infinite loop)
-    # For workflow_dispatch, head_commit is null so we default to empty string
-    if: ${{ github.event_name == 'workflow_dispatch' || !startsWith(github.event.head_commit.message || '', 'chore: release') }}
+    if: "github.event_name == 'workflow_dispatch' || !startsWith(github.event.head_commit.message || '', 'chore: release')"
     permissions:
       contents: write
       id-token: write # Required for npm OIDC trusted publishing
