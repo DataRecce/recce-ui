@@ -16,6 +16,12 @@ const sourcePkg = JSON.parse(fs.readFileSync(sourcePkgPath, 'utf8'));
 // Dependencies that should stay as peerDependencies (provided by consuming apps)
 const peerDeps = new Set(Object.keys(rootPkg.peerDependencies || {}));
 
+// Dependencies that should be in BOTH peerDependencies and dependencies
+// (bundled with library but also expected to be provided by consumer for version alignment)
+const keepInBoth = new Set([
+  '@mui/material',  // Primary UI framework - needed in both for proper bundling
+]);
+
 // Dependencies that are specific to Next.js/SSR and shouldn't be in the UI library
 const skipDeps = new Set([
   'next',
@@ -34,7 +40,8 @@ const skipDeps = new Set([
 // Sync dependencies from source
 const newDeps = {};
 for (const [dep, version] of Object.entries(sourcePkg.dependencies || {})) {
-  if (!peerDeps.has(dep) && !skipDeps.has(dep)) {
+  // Include if: (not a peer dep OR in keepInBoth) AND not in skipDeps
+  if ((!peerDeps.has(dep) || keepInBoth.has(dep)) && !skipDeps.has(dep)) {
     newDeps[dep] = version;
   }
 }
