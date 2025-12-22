@@ -1,0 +1,102 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_type:
+        description: 'Version increment type'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write  # Required for npm OIDC trusted publishing
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'  # Node 22 includes npm 11+ with OIDC support
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Verify npm version
+        run: |
+          NPM_VERSION=$(npm --version)
+          echo "npm version: $NPM_VERSION"
+          # npm 11.5.1+ required for OIDC trusted publishing
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build package
+        run: pnpm build
+
+      - name: Type check
+        run: pnpm type:check
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Bump version
+        id: bump
+        run: |
+          OLD_VERSION=$(node -p "require('./package.json').version")
+          npm version ${{ inputs.version_type }} --no-git-tag-version
+          NEW_VERSION=$(node -p "require('./package.json').version")
+          echo "old_version=$OLD_VERSION" >> $GITHUB_OUTPUT
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "Bumped version from $OLD_VERSION to $NEW_VERSION"
+
+      - name: Commit version bump
+        run: |
+          git add package.json
+          git commit -m "chore: release v${{ steps.bump.outputs.new_version }}"
+          git tag "v${{ steps.bump.outputs.new_version }}"
+
+      - name: Push changes
+        run: |
+          git push origin main
+          git push origin "v${{ steps.bump.outputs.new_version }}"
+
+      # npm OIDC trusted publishing - no NPM_TOKEN required
+      # Provenance attestation is automatic with trusted publishing
+      - name: Publish to npm
+        run: npm publish --access public
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.bump.outputs.new_version }}
+          name: v${{ steps.bump.outputs.new_version }}
+          body: |
+            ## Changes
+
+            Version bumped from v${{ steps.bump.outputs.old_version }} to v${{ steps.bump.outputs.new_version }}
+
+            Install:
+            ```bash
+            npm install @datarecce/ui@${{ steps.bump.outputs.new_version }}
+            ```
+          generate_release_notes: true
