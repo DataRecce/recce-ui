@@ -5,11 +5,9 @@
  * Components are organized by feature area.
  */
 
-// UI Foundation Components
-export { Provider } from '@/components/ui/provider';
-export { ColorModeProvider, useColorMode } from '@/components/ui/color-mode';
-export { Toaster } from '@/components/ui/toaster';
-export { Tooltip } from '@/components/ui/tooltip';
+// UI Foundation Components (MUI-based)
+export { MuiProvider, default as MuiProviderDefault } from '@/components/ui/mui-provider';
+export { Toaster, ToasterProvider, useToaster } from '@/components/ui/toaster';
 
 // Lineage Components
 export { LineagePage } from '@/components/lineage/LineagePage';
