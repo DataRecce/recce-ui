@@ -83,13 +83,13 @@ jobs:
           git add package.json
           git commit -m "chore: release v${{ steps.bump.outputs.new_version }}"
           git tag "v${{ steps.bump.outputs.new_version }}"
-        env:
-          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
 
       - name: Push changes
         run: |
           git push origin main
           git push origin "v${{ steps.bump.outputs.new_version }}"
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
 
       # npm OIDC trusted publishing - no NPM_TOKEN required
       # Provenance attestation is automatic with trusted publishing
