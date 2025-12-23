@@ -36,6 +36,11 @@
       "import": "./dist/types.mjs",
       "require": "./dist/types.js"
     },
+    "./hooks": {
+      "types": "./dist/hooks.d.ts",
+      "import": "./dist/hooks.mjs",
+      "require": "./dist/hooks.js"
+    },
     "./styles": {
       "import": "./dist/styles.css",
       "require": "./dist/styles.css"
