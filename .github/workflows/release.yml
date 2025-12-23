@@ -102,9 +102,7 @@ jobs:
       # npm OIDC trusted publishing - no NPM_TOKEN required
       # Provenance attestation is automatic with trusted publishing
       - name: Publish to npm
-        env:
-          NPM_CONFIG_PROVENANCE: true
-        run: npm publish --access public --provenance
+        run: npm publish --access public
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
