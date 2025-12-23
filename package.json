@@ -71,17 +71,15 @@
     "url": "git+https://github.com/DataRecce/recce-ui.git"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.0.0",
-    "@mui/material": "^7.0.0",
-    "@tanstack/react-query": "^5.0.0",
-    "@xyflow/react": "^12.0.0",
-    "axios": "^1.0.0",
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0"
   },
-  "_comment": "Dependencies are synced with recce-source/js/package.json. peerDependencies use broad ranges for library compatibility.",
   "dependencies": {
     "@amplitude/unified": "1.0.0-beta.9",
+    "@emotion/react": "^11.14.0",
+    "@tanstack/react-query": "^5.0.0",
+    "@xyflow/react": "^12.0.0",
+    "axios": "^1.0.0",
     "@codemirror/lang-sql": "^6.10.0",
     "@codemirror/lang-yaml": "^6.1.2",
     "@codemirror/merge": "^6.11.2",
