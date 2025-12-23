@@ -11,35 +11,25 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
-    "./lineage": {
-      "types": "./dist/lineage.d.ts",
-      "import": "./dist/lineage.mjs",
-      "require": "./dist/lineage.js"
+    "./components": {
+      "types": "./dist/components.d.ts",
+      "import": "./dist/components.mjs",
+      "require": "./dist/components.js"
     },
-    "./charts": {
-      "types": "./dist/charts.d.ts",
-      "import": "./dist/charts.mjs",
-      "require": "./dist/charts.js"
-    },
-    "./query": {
-      "types": "./dist/query.d.ts",
-      "import": "./dist/query.mjs",
-      "require": "./dist/query.js"
-    },
-    "./profile": {
-      "types": "./dist/profile.d.ts",
-      "import": "./dist/profile.mjs",
-      "require": "./dist/profile.js"
-    },
-    "./types": {
-      "types": "./dist/types.d.ts",
-      "import": "./dist/types.mjs",
-      "require": "./dist/types.js"
+    "./api": {
+      "types": "./dist/api.d.ts",
+      "import": "./dist/api.mjs",
+      "require": "./dist/api.js"
     },
     "./hooks": {
       "types": "./dist/hooks.d.ts",
       "import": "./dist/hooks.mjs",
       "require": "./dist/hooks.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/types.mjs",
+      "require": "./dist/types.js"
     },
     "./styles": {
       "import": "./dist/styles.css",

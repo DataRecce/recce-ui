@@ -10,7 +10,7 @@ export default defineConfig({
     types: 'src/types/index.ts'
   },
   format: ['cjs', 'esm'],
-  dts: false, // Temporarily disable due to type issues in source
+  dts: true,
   sourcemap: true,
   clean: true,
   external: [
