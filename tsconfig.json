@@ -8,6 +8,7 @@
     "declarationMap": true,
     "outDir": "./dist",
     "rootDirs": ["./src", "./recce-source/js/src"],
+    "baseUrl": ".",
     "strict": false,
     "noEmit": false,
     "esModuleInterop": true,
@@ -18,6 +19,7 @@
     "jsx": "react-jsx",
     "allowJs": true,
     "downlevelIteration": true,
+    "typeRoots": ["./node_modules/@types"],
     "paths": {
       "@/*": ["./recce-source/js/src/*"],
       "@datarecce/*": ["./recce-source/js/src/*"],
