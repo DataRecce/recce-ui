@@ -49,7 +49,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "22" # Node 22 includes npm 11+ with OIDC support
+          node-version: "24" # Node 24 includes npm 11+ with OIDC support
           cache: "pnpm"
           registry-url: "https://registry.npmjs.org"
 
