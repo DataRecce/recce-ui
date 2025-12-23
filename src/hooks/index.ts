@@ -22,3 +22,6 @@ export { RecceQueryContextProvider, RowCountStateContextProvider, useRecceQueryC
 export { RecceActionContextProvider, useRecceActionContext } from '@/lib/hooks/RecceActionContext';
 export { RecceCheckContextProvider, useRecceCheckContext } from '@/lib/hooks/RecceCheckContext';
 export { IdleTimeoutProvider, useIdleTimeout } from '@/lib/hooks/IdleTimeoutContext';
+
+// API Configuration
+export { ApiConfigProvider, useApiConfig, useApiClient, useApiConfigSafe, type ApiConfig } from '@/lib/hooks/ApiConfigContext';
