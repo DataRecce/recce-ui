@@ -26,6 +26,9 @@ export default defineConfig({
     '@tanstack/react-query',
     '@xyflow/react',
     'axios',
+    'next-themes',
+    // Externalize MUI so host app's ThemeProvider context is shared
+    /^@mui\//,
     // Externalize all next.js imports (next, next/link, next/navigation, next/script, etc.)
     /^next($|\/)/,
   ],
