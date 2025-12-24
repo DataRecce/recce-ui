@@ -26,10 +26,8 @@ export default defineConfig({
     '@tanstack/react-query',
     '@xyflow/react',
     'axios',
-    'next',
-    'next/link',
-    'next/image',
-    'next/router'
+    // Externalize all next.js imports (next, next/link, next/navigation, next/script, etc.)
+    /^next($|\/)/,
   ],
   // Bundle html-to-image and html2canvas-pro (including dynamic subpath imports)
   // Using a function to catch subpath imports like 'html2canvas-pro/dist/html2canvas-pro.esm.js'
