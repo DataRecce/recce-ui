@@ -42,7 +42,9 @@ export default defineConfig({
   alias: {
     '@': path.resolve(__dirname, 'recce-source/js/src'),
     'src': path.resolve(__dirname, 'recce-source/js/src'),
-    'public': path.resolve(__dirname, 'recce-source/js/public')
+    'public': path.resolve(__dirname, 'recce-source/js/public'),
+    // Resolve dynamic import subpath to main package for bundling
+    'html2canvas-pro/dist/html2canvas-pro.esm.js': 'html2canvas-pro',
   },
   banner: {
     js: '"use client"',
