@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2022",
     "lib": ["DOM", "DOM.Iterable", "ES2024"],
-    "module": "ESNext",
+    "module": "preserve",
     "moduleResolution": "bundler",
     "declaration": true,
     "declarationMap": true,
@@ -16,6 +16,7 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "verbatimModuleSyntax": true,
     "jsx": "react-jsx",
     "allowJs": true,
     "downlevelIteration": true,
