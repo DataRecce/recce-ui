@@ -24,7 +24,11 @@ export default defineConfig({
     'next',
     'next/link',
     'next/image',
-    'next/router'
+    'next/router',
+    // Dynamic imports with subpaths - must be external
+    'html2canvas-pro',
+    'html2canvas-pro/dist/html2canvas-pro.esm.js',
+    'html-to-image'
   ],
   treeshake: true,
   splitting: false,
