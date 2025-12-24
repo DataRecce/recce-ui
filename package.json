@@ -53,7 +53,8 @@
     "build:storybook": "storybook build",
     "prepublishOnly": "npm run build",
     "submodule:update": "git submodule update --remote --merge",
-    "sync:deps": "node scripts/sync-deps.js && pnpm install"
+    "sync:deps": "node scripts/sync-deps.js && pnpm install",
+    "check:exports": "node scripts/check-exports.js"
   },
   "keywords": [
     "react",
