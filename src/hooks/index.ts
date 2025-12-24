@@ -15,7 +15,6 @@ export { default as useValueDiffAlertDialog } from '@/components/lineage/useValu
 
 // Context Providers
 export { default as RecceContextProvider } from '@/lib/hooks/RecceContextProvider';
-export { RecceProviders } from './RecceProviders';
 export { RecceInstanceInfoProvider, useRecceInstanceContext } from '@/lib/hooks/RecceInstanceContext';
 export { LineageGraphContextProvider, useLineageGraphContext, useRunsAggregated } from '@/lib/hooks/LineageGraphContext';
 export { RecceShareStateContextProvider, useRecceShareStateContext } from '@/lib/hooks/RecceShareStateContext';
