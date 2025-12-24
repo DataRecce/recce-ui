@@ -31,9 +31,9 @@ export default defineConfig({
     'next/image',
     'next/router'
   ],
-  // Note: html2canvas-pro and html-to-image are intentionally NOT external
-  // They need to be bundled because they use dynamic imports with subpaths
-  noExternal: ['html2canvas-pro', 'html-to-image'],
+  // Bundle html-to-image and html2canvas-pro (including dynamic subpath imports)
+  // Using a function to catch subpath imports like 'html2canvas-pro/dist/html2canvas-pro.esm.js'
+  noExternal: (id) => id === 'html-to-image' || id.startsWith('html2canvas-pro'),
   treeshake: true,
   minify: false,
   loader: {
@@ -43,8 +43,6 @@ export default defineConfig({
     '@': path.resolve(__dirname, 'recce-source/js/src'),
     'src': path.resolve(__dirname, 'recce-source/js/src'),
     'public': path.resolve(__dirname, 'recce-source/js/public'),
-    // Resolve dynamic import subpath to main package for bundling
-    'html2canvas-pro/dist/html2canvas-pro.esm.js': 'html2canvas-pro',
   },
   banner: {
     js: '"use client"',
