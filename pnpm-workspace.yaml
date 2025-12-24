@@ -1,3 +1,9 @@
 packages:
-  - '.'
-  - 'recce-source/js'
+  - .
+  - recce-source/js
+
+onlyBuiltDependencies:
+  - '@sentry/cli'
+  - esbuild
+  - sharp
+  - unrs-resolver
