@@ -19,7 +19,12 @@ export { RecceInstanceInfoProvider, useRecceInstanceContext } from '@/lib/hooks/
 export { LineageGraphContextProvider, useLineageGraphContext, useRunsAggregated } from '@/lib/hooks/LineageGraphContext';
 export { RecceShareStateContextProvider, useRecceShareStateContext } from '@/lib/hooks/RecceShareStateContext';
 export { RecceQueryContextProvider, RowCountStateContextProvider, useRecceQueryContext, useRowCountStateContext } from '@/lib/hooks/RecceQueryContext';
-export { RecceActionContextProvider, useRecceActionContext } from '@/lib/hooks/RecceActionContext';
+export {
+  RecceActionContext,
+  RecceActionContextProvider,
+  useRecceActionContext,
+  type RecceActionContextType,
+} from '@/lib/hooks/RecceActionContext';
 export { RecceCheckContextProvider, useRecceCheckContext } from '@/lib/hooks/RecceCheckContext';
 export { IdleTimeoutProvider, useIdleTimeout } from '@/lib/hooks/IdleTimeoutContext';
 
