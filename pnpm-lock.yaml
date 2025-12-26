@@ -42,7 +42,7 @@ importers:
         specifier: 3.0.0-canary.8
         version: 3.0.0-canary.8(date-fns@4.1.0)
       '@mui/material':
-        specifier: ^7.0.0
+        specifier: ^7.3.6
         version: 7.3.6(@emotion/react@11.14.0(@types/react@19.2.7)(react@19.2.3))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.7)(react@19.2.3))(@types/react@19.2.7)(react@19.2.3))(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@mui/system':
         specifier: ^7.0.0
