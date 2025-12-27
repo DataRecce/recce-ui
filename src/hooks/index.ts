@@ -36,3 +36,21 @@ export {
   useApiConfigSafe,
   type ApiConfig
 } from '@/lib/hooks/ApiConfigContext';
+
+// Route Configuration (for recce-cloud path prefixing)
+export {
+  RouteConfigProvider,
+  useRouteConfig,
+  useRouteConfigSafe,
+  type RouteConfig,
+  type RouteConfigContextType,
+} from '../lib/hooks/RouteConfigContext';
+
+// App Router hooks (custom version with RouteConfigContext support)
+export {
+  useAppLocation,
+  useAppLocationWithSearch,
+  useAppRoute,
+  useAppNavigation,
+  navigateTo,
+} from '../lib/hooks/useAppRouter';
