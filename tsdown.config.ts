@@ -42,8 +42,10 @@ export default defineConfig({
   },
   alias: {
     // Override useAppRouter with our custom version that supports RouteConfigContext
-    // This must come before the general '@' alias to take precedence
+    // We need both aliases to ensure all import patterns are caught
     '@/lib/hooks/useAppRouter': path.resolve(__dirname, 'src/lib/hooks/useAppRouter.ts'),
+    // Also add the resolved path alias for when @ is resolved first
+    [path.resolve(__dirname, 'recce-source/js/src/lib/hooks/useAppRouter')]: path.resolve(__dirname, 'src/lib/hooks/useAppRouter.ts'),
     // General aliases for OSS source
     '@': path.resolve(__dirname, 'recce-source/js/src'),
     'src': path.resolve(__dirname, 'recce-source/js/src'),
