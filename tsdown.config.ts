@@ -11,7 +11,8 @@ export default defineConfig({
     components: 'src/components/index.ts',
     api: 'src/api/index.ts',
     hooks: 'src/hooks/index.ts',
-    types: 'src/types/index.ts'
+    types: 'src/types/index.ts',
+    theme: 'src/theme.ts',
   },
   platform: 'neutral',
   format: ['cjs', 'esm'],
