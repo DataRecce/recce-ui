@@ -43,11 +43,13 @@
   },
   "files": [
     "dist",
+    "recce-source",
+    "src",
     "README.md"
   ],
   "scripts": {
     "dev": "tsdown --watch",
-    "build": "tsdown",
+    "build": "tsdown && node scripts/create-styles.js",
     "type:check": "tsc --noEmit 2>&1 | grep -E '^src/' || echo 'Type check passed (OSS errors filtered)'",
     "type:check:strict": "tsc --noEmit",
     "type:check:all": "tsc --noEmit",
