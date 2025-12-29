@@ -11,6 +11,7 @@ export * from "./components";
 export * from "./api";
 export * from "./hooks";
 export * from "./types";
+export * from "./theme";
 
 // Export a version constant
 export const VERSION = "0.1.0";
