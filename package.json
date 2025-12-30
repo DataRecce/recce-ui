@@ -39,7 +39,12 @@
     "./styles": {
       "import": "./dist/styles.css",
       "require": "./dist/styles.css"
-    }
+    },
+    "./dist/styles.css": {
+      "import": "./dist/styles.css",
+      "require": "./dist/styles.css"
+    },
+    "./dist/*.css": "./dist/*.css"
   },
   "files": [
     "dist",
