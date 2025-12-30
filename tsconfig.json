@@ -34,5 +34,6 @@
     "dist",
     "**/*.test.ts",
     "**/*.test.tsx",
-    "recce-source/**/*"]
+    "recce-source/**/*"
+  ]
 }
