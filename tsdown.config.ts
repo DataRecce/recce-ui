@@ -13,7 +13,6 @@ export default defineConfig({
     hooks: 'src/hooks/index.ts',
     types: 'src/types/index.ts',
     theme: 'src/theme.ts',
-    'global-styles': 'src/global-styles.css',
   },
   platform: 'neutral',
   format: ['cjs', 'esm'],

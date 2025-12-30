@@ -16,7 +16,7 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "verbatimModuleSyntax": false,
+    "verbatimModuleSyntax": true,
     "jsx": "react-jsx",
     "allowJs": true,
     "downlevelIteration": true,
@@ -29,11 +29,5 @@
     }
   },
   "include": ["src/**/*", "src/global.d.ts", "src/mui-augmentation.d.ts"],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "**/*.test.ts",
-    "**/*.test.tsx",
-    "recce-source/**/*"
-  ]
+  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.test.tsx"]
 }
