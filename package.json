@@ -38,6 +38,9 @@
     },
     "./styles": {
       "default": "./dist/styles.css"
+    },
+    "./dist/*.css": {
+      "default": "./dist/*.css"
     }
   },
   "files": [
