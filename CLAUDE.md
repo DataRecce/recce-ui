@@ -1,99 +1,31 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Extended guidance for Claude Code (claude.ai/code) when working with this repository.
+
+> **For universal agent instructions, see [AGENTS.md](./AGENTS.md).**
+
+## What's in Each File
+
+| AGENTS.md (All AI Agents) | CLAUDE.md (Claude-Specific) |
+|---------------------------|----------------------------|
+| Critical constraints | Architecture deep-dives |
+| Essential commands | Build system internals |
+| Repository layout | Code patterns & examples |
+| Commit conventions | Path alias configuration |
+| Common pitfalls | CSS bundling strategy |
+| | Type generation details |
+| | Extended troubleshooting |
+| | Key principles |
+
+---
+
+This file provides extended guidance for Claude Code beyond the basics in AGENTS.md.
 
 ## Overview
 
 Recce UI (`@datarecce/ui`) is a React component library for building data validation and review interfaces. It provides the UI components used in [Recce](https://github.com/DataRecce/recce), a data validation tool for dbt projects. The library enables developers to create data comparison, profiling, and validation workflows with pre-built, production-ready components.
 
 **Key Architecture:** This is a wrapper library that packages the open-source Recce project for npm distribution. It uses a git submodule pattern where actual component source lives in `recce-source/` (pointing to the main Recce repository), while `src/` contains only re-exports and minimal customizations for the npm package.
-
-## Critical Constraints & Guidelines
-
-### Do NOT:
-
-- ❌ **Skip submodule initialization**: Always clone with `--recursive` flag or run `git submodule init && git submodule update`
-- ❌ **Edit files in recce-source/ directly**: This is OSS code from the main Recce repo; use patches if modifications are needed
-- ❌ **Use npm or yarn**: Must use `pnpm` as specified in .npmrc and package.json
-- ❌ **Bypass pre-commit hooks**: Never use `--no-verify` on commits; hooks enforce quality standards
-- ❌ **Commit node_modules or dist/**: These are build artifacts and dependencies (gitignored)
-- ❌ **Edit generated files in dist/**: Always regenerate via `pnpm build` or `make build`
-- ❌ **Publish without running build**: `prepublishOnly` hook ensures this, but never bypass it
-- ❌ **Add dependencies not in recce-source**: Keep dependency lists synchronized with OSS package
-- ❌ **Use interactive git commands**: Never use `git rebase -i`, `git add -i` (interactive prompts don't work)
-
-### Always:
-
-- ✅ **Initialize submodules with --recursive flag**: `git clone --recursive` or use submodule commands after clone
-- ✅ **Use pnpm for package management**: Package manager is locked to pnpm via .npmrc
-- ✅ **Run make sync when updating from OSS**: This updates submodule, syncs deps, and installs
-- ✅ **Build before testing locally with link**: Run `make build` then `make link` for local testing
-- ✅ **Run type:check before committing**: Ensure `pnpm type:check` passes to catch errors early
-- ✅ **Keep dependencies in sync with recce-source**: Use `pnpm run sync:deps` to synchronize
-- ✅ **Update VERSION file with package.json**: Both must match for consistency
-- ✅ **Test component exports**: Run `pnpm check:exports` to find new/stale exports
-
-## Git Development Practices
-
-### Branch Naming
-
-All new code MUST be developed in a branch with one of these prefixes, branched directly from `main`:
-
-- `feature/` - New features or enhancements
-- `fix/` - Bug fixes
-- `hotfix/` - Critical production fixes
-
-```bash
-# Create a new feature branch
-git checkout main
-git pull origin main
-git checkout -b feature/my-new-feature
-```
-
-### Commit Requirements
-
-**1. Sign-off (DCO):** Every commit MUST include a "Signed-off-by:" line per the [Developer Certificate of Origin](https://developercertificate.org/):
-
-```bash
-git commit -s -m "Your commit message"
-```
-
-**2. Semantic/Conventional Commits:** Use structured commit messages:
-
-```
-<type>(<scope>): <description>
-
-[optional body]
-
-[optional footer]
-Signed-off-by: Your Name <your.email@example.com>
-```
-
-**Types:**
-
-- `feat` - New feature
-- `fix` - Bug fix
-- `docs` - Documentation only
-- `style` - Formatting, no code change
-- `refactor` - Code change that neither fixes a bug nor adds a feature
-- `test` - Adding or updating tests
-- `chore` - Maintenance tasks (deps, build, CI)
-
-**Examples:**
-
-```bash
-git commit -s -m "feat(components): add LineageView export"
-git commit -s -m "fix(build): ensure global-styles loaded first"
-git commit -s -m "docs: update CLAUDE.md with submodule workflow"
-git commit -s -m "chore(deps): sync dependencies from recce-source"
-```
-
-**Additional Guidelines:**
-
-- Commit frequently during development
-- Use worktrees for parallel work (`git worktree --help`)
-- Main branch requires PRs
-- Pre-commit hooks enforce quality—never skip them
 
 ## Code Organization Philosophy
 
@@ -261,72 +193,7 @@ recce-ui/
 
 ## Development Commands
 
-### Initial Setup
-
-**Prerequisites:**
-- Node.js >= 20 (check with `node --version`)
-- pnpm (install with `npm install -g pnpm`)
-- Git with submodule support
-
-**First Time Setup:**
-
-```bash
-# Clone repository WITH submodules
-git clone --recursive https://github.com/DataRecce/recce-ui.git
-cd recce-ui
-
-# If you forgot --recursive, initialize submodules now:
-git submodule init
-git submodule update
-
-# Install dependencies
-pnpm install
-
-# Build the library
-make build
-
-# Run type checking
-make type-check
-```
-
-### Build and Development
-
-```bash
-# Show all available commands
-make help
-
-# Build the package (tsdown + CSS aggregation)
-make build
-# OR
-pnpm build
-
-# Watch mode for development (rebuilds on file changes)
-pnpm dev
-
-# Type checking (filters out OSS errors)
-make type-check
-# OR
-pnpm type:check
-
-# Type checking including OSS errors (for debugging)
-make type-check-all
-# OR
-pnpm type:check:all
-
-# Check for new/stale component exports
-make check-exports
-# OR
-pnpm check:exports
-
-# Clean build artifacts
-make clean
-
-# Full rebuild (clean + build)
-make rebuild
-
-# Run all checks (sync + build + type-check + check-exports)
-make verify
-```
+> **Basic commands are in [AGENTS.md](./AGENTS.md#essential-commands).** This section covers extended workflows.
 
 ### Submodule Management
 
@@ -701,6 +568,8 @@ alias: {
 - Used by nvm and CI/CD
 
 ## Common Errors & Fixes
+
+> **Quick fixes for common issues are in [AGENTS.md](./AGENTS.md#common-pitfalls).** This section provides extended troubleshooting.
 
 ### Submodule Not Initialized
 
