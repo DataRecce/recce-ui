@@ -155,7 +155,7 @@ import type { DataFrame, Check } from "@datarecce/ui/types";
 
 ## Support
 
-- [Discord](https://discord.com/invite/VpwXRC34jz)
+- [Join our community on Discord](https://discord.gg/DnmXC4ehsy)
 - [dbt Slack #tools-recce](https://getdbt.slack.com/archives/C05C28V7CPP)
 - [Email: help@reccehq.com](mailto:help@reccehq.com)
 
