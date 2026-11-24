@@ -250,7 +250,7 @@ pnpm check:exports   # Shows missing/stale exports
 
 - **Questions:** Open a [GitHub Discussion](https://github.com/DataRecce/recce-ui/discussions)
 - **Bugs:** Open a [GitHub Issue](https://github.com/DataRecce/recce-ui/issues)
-- **Chat:** Join [Discord](https://discord.com/invite/VpwXRC34jz) or [dbt Slack #tools-recce](https://getdbt.slack.com/archives/C05C28V7CPP)
+- **Chat:** [Join our community on Discord](https://discord.gg/DnmXC4ehsy) or [dbt Slack #tools-recce](https://getdbt.slack.com/archives/C05C28V7CPP)
 
 ## Related Documentation
 
